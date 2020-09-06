@@ -25,6 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,15 +56,17 @@ public class MainActivity extends AppCompatActivity {
     private final String defaultwra = "09";
     private final String defaultlepta = "06";
     private TextView mAlarm;
-    private final int MY_NOTIFICATION_ID = 1;
-    private static PendingIntent notifIntent;
-    private static long[] mVibratePattern = {0, 200, 200, 300};
-    private static NotificationManager mNotificationManager;
+    public static final int MY_NOTIFICATION_ID = 1;
+    private PendingIntent notifIntent;
+    private long[] mVibratePattern = {0, 200, 200, 300};
+    public static NotificationManager mNotificationManager;
     private Spinner spin;
     private String item; private String retrieveItem;
     private ArrayAdapter<String> dataAdapter;
-    private boolean canc;
+    public static boolean canc;
     public static final int res_code = 1;
+
+    public static final String FILE_NAME = "prefs.txt";
 
 
     @Override
@@ -210,8 +213,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public static final String FILE_NAME = "prefs.txt";
-
     private void savePrefs() {
         PrintWriter writer = null;
         try {
@@ -284,7 +285,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        loadPrefs();
+
+        File f = getFileStreamPath(FILE_NAME);
+        if (f.length() != 0) {
+            loadPrefs();
+        }
+
     }
 
     @Override
@@ -315,8 +321,7 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), res_code, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-        // repeating everyday by default - if user wants otherwise must cancel it every time it rings
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), pendingIntent);
 
 
         if (canc) {
