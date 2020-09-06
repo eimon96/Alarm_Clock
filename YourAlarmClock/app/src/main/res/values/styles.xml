@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/splashColor</item>
+        <item name="colorPrimaryDark">@color/splashColor</item>
+        <item name="colorAccent">@color/splashColor</item>
+        <item name="android:textColor">@color/greene</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_draw</item>
+    </style>
+
+    <style name="Settings" parent="AppTheme" >
+        <item name="android:textColorPrimary">@color/greene</item>
+        <item name="colorControlNormal">@color/greene</item>
+    </style>
+
+</resources>

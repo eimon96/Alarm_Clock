@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Dice the Alarm Clock</string>
+    <string name="header">Alarm</string>
+    <string name="NoAlarms">No Alarm Yet</string>
+    <string name="About">About</string>
+    <string name="WakeUp">Your LIFE ran into a problem and needs you to \nWAKE UP!</string>
+
+</resources>
