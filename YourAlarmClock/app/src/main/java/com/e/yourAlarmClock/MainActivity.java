@@ -10,10 +10,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -79,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
         spin = findViewById(R.id.spinnerSongs);
 
         List<String> songs = new ArrayList<String>();
-        songs.add("Beat 1");  //re
-        songs.add("Beat 2");  //ringtone
-        songs.add("Beat 3");  //alarm
-        songs.add("Beat 4");  //dark
-        songs.add("Beat 5");  //glitch
+        songs.add("Beat 1");  //dark
+        songs.add("Beat 2");  //tlou
+        songs.add("Beat 3");  //beat1
+        songs.add("Beat 4");  //beat2
+        songs.add("Beat 5");  //re
 
         dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, songs);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -133,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 NotificationN();
 
                 canc = false;
-                AlarmOK(Integer.parseInt(HOURS[pickerHour.getValue()]), Integer.parseInt(MINUTES[pickerMin.getValue()]), item, canc);
+                AlarmOK(Integer.parseInt(HOURS[pickerHour.getValue()]), Integer.parseInt(MINUTES[pickerMin.getValue()]), canc);
 
             }
 
@@ -154,7 +157,13 @@ public class MainActivity extends AppCompatActivity {
                 spin.setAdapter(dataAdapter);
 
                 canc = true;
-                AlarmOK(Integer.parseInt(HOURS[pickerHour.getValue()]), Integer.parseInt(MINUTES[pickerMin.getValue()]), item, canc);
+                AlarmOK(Integer.parseInt(HOURS[pickerHour.getValue()]), Integer.parseInt(MINUTES[pickerMin.getValue()]), canc);
+
+
+
+                Blue_Screen.mMediaPlayer.stop();
+
+
 
 
             }}
@@ -184,6 +193,19 @@ public class MainActivity extends AppCompatActivity {
         return true;
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem about) {
+        int id = about.getItemId();
+        if(id == R.id.about){
+            setContentView(R.layout.about);
+            TextView keimeno = findViewById(R.id.keimeno);
+            keimeno.setMovementMethod(LinkMovementMethod.getInstance());
+            return true;
+        }
+        return super.onOptionsItemSelected(about);
+    }
+
 
     private void NotificationN() {
 
@@ -303,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void AlarmOK(int hour, int minute, String beat, boolean canc){
+    private void AlarmOK(int hour, int minute, boolean canc){
         Calendar now = Calendar.getInstance();
         Calendar calSet = (Calendar) now.clone();
 

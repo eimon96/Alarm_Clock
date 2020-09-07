@@ -4,20 +4,31 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 
 public class Blue_Screen extends Activity {
+
+    private String blueBeat;
+    public static MediaPlayer mMediaPlayer = new MediaPlayer();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +47,41 @@ public class Blue_Screen extends Activity {
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
 
+
+
+        loadPrefs();
+
+        switch (blueBeat) {
+            case "Beat 1":
+                mMediaPlayer = MediaPlayer.create(this, R.raw.dark);
+                break;
+            case "Beat 2":
+                mMediaPlayer = MediaPlayer.create(this, R.raw.tlou);
+                break;
+            case "Beat 3":
+                mMediaPlayer = MediaPlayer.create(this, R.raw.beat_one);
+                break;
+            case "Beat 4":
+                mMediaPlayer = MediaPlayer.create(this, R.raw.beat_two);
+                break;
+            case "Beat 5":
+                mMediaPlayer = MediaPlayer.create(this, R.raw.re);
+                break;
+        }
+        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+        mMediaPlayer.setLooping(true);
+        mMediaPlayer.setVolume(100, 100);
+        mMediaPlayer.start();
+
+
+
+
+
+
         Button dism = findViewById(R.id.Dismiss);
+        final MediaPlayer finalMMediaPlayer = mMediaPlayer;
+
         dism.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -56,10 +101,42 @@ public class Blue_Screen extends Activity {
                 writer.print("");
                 writer.close();
 
+
+                finalMMediaPlayer.stop();
+
                 finish();
             }
         });
     }
+
+
+    private void loadPrefs() {
+        BufferedReader reader = null;
+        try {
+            FileInputStream fis = openFileInput(MainActivity.FILE_NAME);
+            reader = new BufferedReader(new InputStreamReader(fis));
+
+
+            String ss;
+
+            ss = reader.readLine();
+            ss = reader.readLine();
+            ss = reader.readLine();
+            blueBeat = ss;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (null != reader) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -75,6 +152,9 @@ public class Blue_Screen extends Activity {
 
         activityManager.moveTaskToFront(getTaskId(), 0);
 
+        // TODO gia android 10
+
     }
+
 
 }
