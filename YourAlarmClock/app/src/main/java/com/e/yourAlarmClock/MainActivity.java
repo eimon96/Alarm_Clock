@@ -198,9 +198,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem about) {
         int id = about.getItemId();
         if(id == R.id.about){
-            setContentView(R.layout.about);
-            TextView keimeno = findViewById(R.id.keimeno);
-            keimeno.setMovementMethod(LinkMovementMethod.getInstance());
+            Intent iAbout = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(iAbout);
             return true;
         }
         return super.onOptionsItemSelected(about);

@@ -9,6 +9,8 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -28,6 +30,8 @@ public class Blue_Screen extends Activity {
 
     private String blueBeat;
     public static MediaPlayer mMediaPlayer = new MediaPlayer();
+    private Vibrator vib;
+    long[] pattern = {100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100}; // Morse Code SOS
 
 
     @Override
@@ -70,8 +74,23 @@ public class Blue_Screen extends Activity {
         }
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
+        AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 100, 0);
+
         mMediaPlayer.setLooping(true);
-        mMediaPlayer.setVolume(100, 100);
+
+//        not working but just in case
+//        mMediaPlayer.setVolume(0.09f , 0.09f);
+
+
+        vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vib.vibrate(VibrationEffect.createWaveform(pattern,0));
+        } else {
+            vib.vibrate(pattern,0);
+        }
+
+
         mMediaPlayer.start();
 
 
@@ -103,6 +122,7 @@ public class Blue_Screen extends Activity {
 
 
                 finalMMediaPlayer.stop();
+                vib.cancel();
 
                 finish();
             }
