@@ -12,12 +12,4 @@
         android:text="@string/keimeno"
         android:textSize="22sp"/>
 
-    <TextView
-        android:id="@+id/alias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/keimeno"
-        app:layout_constraintEnd_toEndOf="@id/keimeno"
-        android:text="@string/alias"
-        android:textSize="22sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
