@@ -3,18 +3,19 @@
     <string name="header">Alarm</string>
     <string name="NoAlarms">No Alarm Yet</string>
     <string name="About">About</string>
-    <string name="WakeUp">Your LIFE ran into a problem and needs you to \nWAKE UP!</string>
+    <string name="WakeUp">Your LIFE.exe ran into a problem and needs you to \nWAKE UP!</string>
     <string name="stopCode">Stop sleeping code: GET_OUT_OF_BED</string>
 
     <string name="keimeno">-ATTENTION- \nTo run Alarm app properly you must:\n
         -Give permission Appear On Top in settings.\n
-    -Deactivate battery optimizers for this app.\n
+    -Deactivate battery optimizers for this app. (VERY IMPORTANT)\n
     -Allow notifications.\n\n\n
     Things you must know:\n-The alarm does not activates if your device is turned off.\n
     -If you reboot your device you have to set the alarm from scratch.\n
     -If you dont see the notification around, the alarm is NOT set.\n
-        -Alarm sound triggers even if the phone is in silent mode or do-not-disturbed mode.\n\n\nThemes inspired from The Matrix
-        and from Windows 10 BSOD. xD\nAll beats belong to me, you can find them on
+        -The alarm is one shot, not repeating daily.\n
+        -Alarm sound triggers even if the phone is in silent mode or do-not-disturbed mode.\n\n\nThemes
+        inspired from The Matrix and from Windows 10 BSOD. xD\nAll beats belong to me, you can find them on
         soundcloud.com/nightowle \n\nThats all, thank you! \n-eimon-</string>
 
 </resources>
