@@ -36,7 +36,7 @@ CUBOT RAINBOW 2 (7.0 API 24)
 
 Themes inspired from The Matrix and from Windows 10 BSOD. xD
 
-All beats belong to me, you can find them on soundcloud.com/nightowle
+All beats belong to me, you can find them on https://soundcloud.com/nightowle
 
 
 Thats all, thank you!
