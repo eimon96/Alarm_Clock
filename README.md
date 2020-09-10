@@ -26,9 +26,13 @@ To run Alarm app properly you must:
 
 Tested on: 
 
-SAMSUNG GALAXY GRAND PRIME (5.1.1) 
+SAMSUNG GALAXY GRAND PRIME (SM-G531F 5.1.1 API 22) 
 
-SAMSUNG GALAXY J6 (10)
+SAMSUNG GALAXY J6 (SM-J600FN 10 API 29)
+
+ALCATEL 1S (TCL 5024D_EEA 9.0 API 28) 
+
+CUBOT RAINBOW 2 (7.0 API 24)
 
 Themes inspired from The Matrix and from Windows 10 BSOD. xD
 
