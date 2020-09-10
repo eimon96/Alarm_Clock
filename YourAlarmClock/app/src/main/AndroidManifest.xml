@@ -22,6 +22,7 @@
 
         <activity
             android:name="com.e.yourAlarmClock.SplashActivity"
+            android:theme="@style/SplashTheme"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
