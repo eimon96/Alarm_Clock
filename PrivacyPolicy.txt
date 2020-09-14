@@ -1,3 +1,0 @@
-This app does not collect any data. It's a simple alarm clock application which everyone can use for free.
-
-This file is meant for google.
