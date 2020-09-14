@@ -44,8 +44,16 @@ All beats belong to me, you can find them on https://soundcloud.com/nightowle
 
 <img src="https://i.imgur.com/JTpZMbb.jpg" width="360" height="426"> <img src="https://i.imgur.com/EKhZNv1.jpg" width="360" height="298"> 
 
+# PRIVACY POLICY 
+
+This app does not collect any data. It's a simple alarm clock application which everyone can use for free.
 
 
 Thats all, thank you!
 
 -eimon-
+
+
+# P.S. THIS APP IS ON PLAY STORE! 
+
+You can find it here: https://play.google.com/store/apps/details?id=com.e.yourAlarmClock&hl=en
